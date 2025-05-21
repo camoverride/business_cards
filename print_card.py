@@ -27,9 +27,15 @@ time.sleep(0.5)
 # os.system("sudo chmod 777 /dev/usb/lp0")
 # os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
 # time.sleep(0.5)
-text = "hello"
-cmd = f"echo -e '{text}' | sudo tee /dev/usb/lp0"
-os.system(cmd)
+# text = "hello"
+# cmd = f"echo -e '{text}' | sudo tee /dev/usb/lp0"
+# os.system(cmd)
+
+# Make sure we can write to the device
+os.system("sudo chmod 777 /dev/usb/lp0")
+
+# Send text using a subshell so redirection happens as root
+os.system('sudo bash -c "echo -e \'hello\' > /dev/usb/lp0"')
 
 
 # # Save the text to a temporary file
