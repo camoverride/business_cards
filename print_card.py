@@ -27,11 +27,14 @@ time.sleep(0.5)
 # os.system("sudo chmod 777 /dev/usb/lp0")
 # os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
 # time.sleep(0.5)
+text = "hello"
+cmd = f"echo -e '{text}' | sudo tee /dev/usb/lp0"
+os.system(cmd)
 
 
-# Save the text to a temporary file
-with open("text.txt", "w") as f:
-    f.write(TEXT + "\n")
+# # Save the text to a temporary file
+# with open("text.txt", "w") as f:
+#     f.write(TEXT + "\n")
 
-# Print the text file
-os.system("lp -d face_printer text.txt")
+# # Print the text file
+# os.system("lp -d face_printer text.txt")
