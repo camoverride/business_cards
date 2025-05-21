@@ -1,0 +1,12 @@
+[Unit]
+Description=Business Card Printing Service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/face_yourself
+ExecStart=/home/pi/business_cards/.venv/bin/python /home/pi/business_cards/main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
