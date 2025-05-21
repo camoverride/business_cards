@@ -8,7 +8,7 @@ import cv2
 from cards import card_1 as DATA
 pic = cv2.imread(DATA["pic"])
 pic = cv2.resize(pic, (130, 130))
-PIC_PATH = cv2.imwrite("_.png")
+PIC_PATH = cv2.imwrite("_.png", pic)
 TEXT = DATA["text"]
 
 
