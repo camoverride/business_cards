@@ -6,7 +6,8 @@ import cv2
 
 # Import image and text to print.
 from cards import card_1 as DATA
-PIC = cv2.resize(DATA["pic"], (130, 130))
+PIC = cv2.imread(DATA["pic"])
+PIC = cv2.resize(PIC, (130, 130))
 TEXT = DATA["text"]
 
 

@@ -12,7 +12,7 @@ If it's your first time using a particular Pi:
 - `source .venv/bin/activate`
 - `pip install -r requirements.txt`
 
-Install printer requirements (not all are needed):
+Install printer requirements (probably not all are needed):
 
 - `sudo apt install libatlas-base-dev libgstreamer1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good libcups2-dev libcupsimage2-dev git build-essential cups system-config-printer`
 
@@ -31,7 +31,7 @@ Get CUPS up and running [link](https://cdn-learn.adafruit.com/downloads/pdf/netw
 
 Set the printer name:
 
-- `cd ../face_yourself`
+- `cd ../business_cards`
 - `lpadmin -p face_printer -v usb://POS58/Printer?serial=FMD072`
 - `lpadmin -p face_printer -E -m zjiang/ZJ-58.ppd`
 - `cupsenable face_printer`
@@ -47,17 +47,17 @@ Set the printer name:
 Start a service with *systemd*. This will start the program when the computer starts and revive it when it dies:
 
 - `mkdir -p ~/.config/systemd/user`
-- `cat printing.service > ~/.config/systemd/user/printing.service`
+- `cat business_card.service > ~/.config/systemd/user/business_card.service`
 
 Start the service using the commands below:
 
 - `systemctl --user daemon-reload`
-- `systemctl --user enable printing.service`
-- `systemctl --user start printing.service`
+- `systemctl --user enable business_card.service`
+- `systemctl --user start business_card.service`
 
-Check the status: `systemctl --user status printing.service`
+Check the status: `systemctl --user status business_card.service`
 
 Start it on boot: `sudo loginctl enable-linger pi`
 
-Get the logs: `journalctl --user -u printing.service`
+Get the logs: `journalctl --user -u business_card.service`
 
