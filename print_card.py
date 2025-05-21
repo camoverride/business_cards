@@ -10,7 +10,7 @@ TEXT = DATA["text"]
 PIC_PATH = "_.png"
 pic = cv2.imread(DATA["pic"])
 pic = cv2.resize(pic, (130, 130))
-cv2.imwrite("_.png", PIC_PATH)
+cv2.imwrite(PIC_PATH, pic)
 
 
 
