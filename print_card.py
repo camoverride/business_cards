@@ -18,6 +18,8 @@ cv2.imwrite(PIC_PATH, pic)
 
 # Enable the printer.
 os.system("sudo chmod 777 /dev/usb/lp0")
+os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
+
 
 # Print the image
 os.system(f"lp -d face_printer {PIC_PATH}")
@@ -30,13 +32,12 @@ os.system(f"lp -d face_printer {PIC_PATH}")
 # # Print the text file
 # os.system("lp -d face_printer text.txt")
 
-os.system("sudo modprobe -r usblp")
-time.sleep(0.5)
-os.system("sudo modprobe usblp")
-time.sleep(0.5)
-os.system("sudo chmod 777 /dev/usb/lp0")
+# os.system("sudo modprobe -r usblp")
+# time.sleep(0.5)
+# os.system("sudo modprobe usblp")
+# time.sleep(0.5)
+# os.system("sudo chmod 777 /dev/usb/lp0")
 
-os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
 
 
 # # Print the text.
