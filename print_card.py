@@ -23,5 +23,6 @@ os.system(f"lp -d face_printer {PIC_PATH}")
 time.sleep(0.5)
 
 # Print the text.
+os.system("sudo chmod 777 /dev/usb/lp0")
 os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
 time.sleep(0.5)
