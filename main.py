@@ -9,7 +9,7 @@ import cv2
 BUTTON_PIN = 17  # GPIO17, physical pin 11
 
 # Delay between allowed button presses (seconds)
-DELAY = 5
+DELAY = 7
 
 # Import image and text to print.
 from cards import card_1 as DATA
@@ -35,7 +35,7 @@ try:
                 print("pressed")
 
                 # Print the text
-                os.system(f"sudo sh -c 'echo -e \"{TEXT}\" > /dev/usb/lp0'")
+                os.system(f"sudo sh -c 'echo \"{TEXT}\" > /dev/usb/lp0'")
 
                 # Print the image
                 os.system(f"lp -d face_printer {PIC_PATH}")
