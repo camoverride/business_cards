@@ -9,7 +9,7 @@ import cv2
 BUTTON_PIN = 17  # GPIO17, physical pin 11
 
 # Delay between allowed button presses (seconds)
-DELAY = 7
+DELAY = 10
 
 # Import image and text to print.
 from cards import card_1 as DATA
