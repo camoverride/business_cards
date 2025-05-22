@@ -8,7 +8,7 @@ import cv2
 # Set the GPIO pin number (using BCM numbering)
 BUTTON_PIN = 17  # GPIO17, physical pin 11
 
-# Must wait this long before a new print is allowed. Min 5 for CUPS to reset.
+# Delay between allowed button presses (seconds)
 DELAY = 5
 
 # Import image and text to print.
@@ -19,29 +19,30 @@ pic = cv2.imread(DATA["pic"])
 pic = cv2.resize(pic, (130, 130))
 cv2.imwrite(PIC_PATH, pic)
 
-# Set up GPIO using BCM numbering
+# Set up GPIO
 GPIO.setmode(GPIO.BCM)
-
-# Set up the pin as an input WITHOUT internal pull-up/down (we're using an external one)
 GPIO.setup(BUTTON_PIN, GPIO.IN)
-
 
 print("Press the button. Press Ctrl+C to exit.")
 
+last_press_time = 0
+
 try:
     while True:
-        # Detect button press.
         if GPIO.input(BUTTON_PIN) == GPIO.LOW:
+            now = time.time()
+            if now - last_press_time > DELAY:
+                print("pressed")
 
-            # Print the text.
-            os.system("sudo chmod 777 /dev/usb/lp0")
-            os.system(f"sudo echo -e {TEXT} > /dev/usb/lp0")
+                # Print the text
+                os.system(f"sudo sh -c 'echo -e \"{TEXT}\" > /dev/usb/lp0'")
 
-            # Print the image
-            os.system(f"lp -d face_printer {PIC_PATH}")
+                # Print the image
+                os.system(f"lp -d face_printer {PIC_PATH}")
 
-        # Delay between button presses.
-        time.sleep(DELAY)
+                last_press_time = now
+
+        time.sleep(0.05)  # check every 50 ms
 
 except KeyboardInterrupt:
     print("Exiting")
