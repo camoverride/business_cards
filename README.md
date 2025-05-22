@@ -8,7 +8,7 @@ If it's your first time using a particular Pi:
 - Generate an SSH key and add it to GitHub.
 - `git clone git@github.com:camoverride/business_cards.git`
 - `cd business_cards`
-- `python3 -m venv .venv`
+- `python3 -m venv .venv --system-site-packages` (to keep GPIO packages)
 - `source .venv/bin/activate`
 - `pip install -r requirements.txt`
 
