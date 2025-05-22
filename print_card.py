@@ -14,53 +14,10 @@ cv2.imwrite(PIC_PATH, pic)
 
 
 
-
-
-# Enable the printer.
+# Print the text.
 os.system("sudo chmod 777 /dev/usb/lp0")
 os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
 
-
 # Print the image
 os.system(f"lp -d face_printer {PIC_PATH}")
-# time.sleep(0.5)
-
-# # Save the text to a temporary file
-# with open("text.txt", "w") as f:
-#     f.write(TEXT + "\n")
-
-# # Print the text file
-# os.system("lp -d face_printer text.txt")
-
-# os.system("sudo modprobe -r usblp")
-# time.sleep(0.5)
-# os.system("sudo modprobe usblp")
-# time.sleep(0.5)
-# os.system("sudo chmod 777 /dev/usb/lp0")
-
-
-
-# # Print the text.
-# os.system("sudo chmod 777 /dev/usb/lp0")
-# os.system(f"sudo echo -e 'helo' > /dev/usb/lp0")
-# time.sleep(0.5)
-# text = "hello"
-# cmd = f"echo -e '{text}' | sudo tee /dev/usb/lp0"
-# os.system(cmd)
-
-# # Make sure we can write to the device
-# os.system("sudo chmod 777 /dev/usb/lp0")
-
-# # Send text using a subshell so redirection happens as root
-# os.system('sudo bash -c "echo -e \'hello\' > /dev/usb/lp0"')
-
-# # Print the image
-# os.system(f"lp -d face_printer {PIC_PATH}")
-# time.sleep(0.5)
-
-# # Save the text to a temporary file
-# with open("text.txt", "w") as f:
-#     f.write(TEXT + "\n")
-
-# # Print the text file
-# os.system("lp -d face_printer text.txt")
+time.sleep(5)
