@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import os
 import time
-import cv2
+import random
 
 
 
@@ -11,19 +11,28 @@ BUTTON_PIN = 17  # GPIO17, physical pin 11
 # Delay between allowed button presses (seconds)
 DELAY = 10
 
-# Import image and text to print.
-from cards import card_1 as DATA
-TEXT = DATA["text"]
-PIC_PATH = "_.png"
-pic = cv2.imread(DATA["pic"])
-pic = cv2.resize(pic, (130, 130))
-cv2.imwrite(PIC_PATH, pic)
-
 # Set up GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(BUTTON_PIN, GPIO.IN)
 
-print("Press the button. Press Ctrl+C to exit.")
+# Text to be displayed on the card
+TEXT = """
+CAM SMITH
+email : camoverride@gmail.com
+IG    : camoverride
+web   : https://smith.cam
+"""
+
+# Picture to be displayed on the card.
+PICS = [
+    "pics/cam1.png",
+    "pics/cam2.jpg",
+    "pics/cam3.jpg",
+    "pics/cam4.jpg",
+    "pics/cam5.jpg",
+    "pics/cam6.jpg",
+    "pics/cam7.jpg",
+]
 
 last_press_time = 0
 
@@ -32,17 +41,19 @@ try:
         if GPIO.input(BUTTON_PIN) == GPIO.LOW:
             now = time.time()
             if now - last_press_time > DELAY:
-                print("pressed")
+                print("Pressed!")
 
                 # Print the text
                 os.system(f"sudo sh -c 'echo \"{TEXT}\" > /dev/usb/lp0'")
 
                 # Print the image
-                os.system(f"lp -d face_printer {PIC_PATH}")
+                pic_path = random.choice(PICS)
+                os.system(f"lp -d face_printer {pic_path}")
 
                 last_press_time = now
 
-        time.sleep(0.05)  # check every 50 ms
+        # Check every 50 ms
+        time.sleep(0.05)
 
 except KeyboardInterrupt:
     print("Exiting")
