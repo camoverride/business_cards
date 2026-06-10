@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import os
 import random
+import time
 
 
 
@@ -23,9 +24,7 @@ PICS = [
     "pics/cam7.jpg",
 ]
 
-last_press_time = 0
 
-print("Pressed!")
 
 # Print the text
 os.system(f"sudo sh -c 'echo \"{TEXT}\" > /dev/usb/lp0'")
