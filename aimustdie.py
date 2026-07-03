@@ -13,7 +13,7 @@ Please take a look. If you'd like more copies, let 's get in touch. They usually
 
 There's also an online version you can share for free:
 
-https:..aimustdie.info
+https://aimustdie.info
 
 Thanks!
 
