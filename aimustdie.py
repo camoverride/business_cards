@@ -24,10 +24,13 @@ https://smith.cam
 """
 
 
-
-subprocess.run(
-    ["lp", "-d", "face_printer"],
-    input=TEXT,
-    text=True,
-    check=True,
-)
+with open("/dev/usb/lp0", "wb") as printer:
+    printer.write(TEXT.encode("utf-8"))
+    printer.write(b"\n\n\n")
+    
+# subprocess.run(
+#     ["lp", "-d", "face_printer"],
+#     input=TEXT,
+#     text=True,
+#     check=True,
+# )
