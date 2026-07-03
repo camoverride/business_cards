@@ -1,7 +1,5 @@
 import RPi.GPIO as GPIO
-import os
-import random
-import time
+import subprocess
 
 
 
@@ -40,6 +38,10 @@ web   : https://smith.cam
 """
 
 
-# Print the text
-with open("/dev/usb/lp0", "w") as printer:
-    printer.write(TEXT)
+
+subprocess.run(
+    ["lp", "-d", "face_printer"],
+    input=TEXT,
+    text=True,
+    check=True,
+)
