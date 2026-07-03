@@ -40,10 +40,6 @@ web   : https://smith.cam
 """
 
 
-
 # Print the text
-os.system(f"sudo sh -c 'echo \"{TEXT}\" > /dev/usb/lp0'")
-
-# Print the image
-pic_path = random.choice("PICS")
-os.system(f"lp -d face_printer {pic_path}")
+with open("/dev/usb/lp0", "w") as printer:
+    printer.write(TEXT)
