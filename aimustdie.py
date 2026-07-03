@@ -13,21 +13,22 @@ Please take a look. If you'd like more copies, let 's get in touch. They usually
 
 There's also an online version you can share for free:
 
-aimustdie.info
+https:..aimustdie.info
 
 Thanks!
 
 
 CAM SMITH
-camoverride@gmail
-https://smith.cam
+email : camoverride@gmail.com
+IG    : @camoverride
+site  : https://smith.cam
 """
 
 
 with open("/dev/usb/lp0", "wb") as printer:
     printer.write(TEXT.encode("utf-8"))
     printer.write(b"\n\n\n")
-    
+
 # subprocess.run(
 #     ["lp", "-d", "face_printer"],
 #     input=TEXT,
