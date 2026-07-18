@@ -1,6 +1,21 @@
-import RPi.GPIO as GPIO
-import subprocess
+"""
+Run the code as follows:
 
+    python aimustdie.py --num_copies 10 --pause 2
+"""
+import argparse
+import os
+import time
+
+
+
+# Get the number of copies.
+parser = argparse.ArgumentParser()
+parser.add_argument("--num_copies", type=int)
+parser.add_argument("--pause", type=int)
+
+
+args = parser.parse_args()
 
 
 # Text to be displayed on the card
@@ -25,13 +40,16 @@ site  : https://smith.cam
 """
 
 
-with open("/dev/usb/lp0", "wb") as printer:
-    printer.write(TEXT.encode("utf-8"))
-    printer.write(b"\n\n\n")
+for _ in range(args.num_copies):
 
-# subprocess.run(
-#     ["lp", "-d", "face_printer"],
-#     input=TEXT,
-#     text=True,
-#     check=True,
-# )
+    with open("/dev/usb/lp0", "wb") as printer:
+
+        # Enable the printer.
+        os.system(f"sudo chmod 777 /dev/usb/lp0")
+
+        # Print the text.
+        printer.write(TEXT.encode("utf-8"))
+        printer.write(b"\n\n\n")
+
+        # Wait a little bit.
+        time.sleep(args.pause)
